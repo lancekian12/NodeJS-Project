@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-project",
+  "version": "1.0.0",
+  "description": "Learning nodejs, express and mongodb",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lance Kian F. Flores",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
