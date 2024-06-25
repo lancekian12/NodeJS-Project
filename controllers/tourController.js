@@ -50,7 +50,7 @@ exports.getAllTours = async (req, res) => {
       if (skip >= numTours) throw new Error('This page does not exist');
     }
 
-    //EXECUTE QUERY
+    // EXECUTE QUERY
     const tours = await query;
 
     // SEND RESPONSE
