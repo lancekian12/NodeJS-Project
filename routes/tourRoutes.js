@@ -1,7 +1,7 @@
 const express = require('express');
 const tourController = require('./../controllers/tourController');
 
-const router = express.Router();
+const router = express.Router(); // Mounting middleware
 
 // router.param('id', tourController.checkID);
 
