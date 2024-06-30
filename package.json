@@ -4,9 +4,9 @@
   "description": "Learning nodejs, express and mongodb",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "start:prod": "set NODE_ENV=production&& nodemon server.js"
+    "start:prod": "set NODE_ENV=production&& nodemon server.js",
+    "debug": "ndb server.js"
   },
   "author": "Lance Kian F. Flores",
   "license": "ISC",
