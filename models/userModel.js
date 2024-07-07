@@ -56,23 +56,31 @@ userSchema.pre('save', async function(next) {
   next();
 });
 
+userSchema.pre('save', function(next) {
+  if (!this.isModified('password') || this.isNew) return next();
+
+  this.passwordChangedAt = Date.now();
+  next();
+});
+
 userSchema.methods.correctPassword = function(candidatePassword, userPassword) {
   return bcrypt.compare(candidatePassword, userPassword);
 };
 
 userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
   if (this.passwordChangedAt) {
-    const changedTimestamp = parseInt(
+    const changedPasswordTimestamp = parseInt(
       this.passwordChangedAt.getTime() / 1000,
       10
     );
 
-    return JWTTimestamp < changedTimestamp;
+    return JWTTimestamp < changedPasswordTimestamp;
   }
   // False means NOT changed
   return false;
 };
 
+// Forgot Password Instance Method
 userSchema.methods.createPasswordResetToken = function() {
   const resetToken = crypto.randomBytes(32).toString('hex');
   this.passwordResetToken = crypto
